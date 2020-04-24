@@ -19,9 +19,11 @@ before_script:
 # before_deploy:
 #   - npm run build-client # make the bundle
 #   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-deploy:
-  skip_cleanup: true # prevents travis from deleting the build
+deploy: # see README for details on these keys
+  skip_cleanup: true
   provider: heroku
-  app: ci-stannie # see README
+  app: ci-stannie
   api_key:
-    secure: YOUR-***ENCRYPTED***-API-KEY-HERE
+    secure: PgLZHV5nmqkIdTQbvm+QFJm1ytv52HwYWoVQJjKidPK708ZdnW3bb1TY0bC29uNTYzLZ7ilSPN0tXB91IIPgpTm6Xa8fS35fJPF++agabY2Pr4Y4PMkzfoCJGT0A4YMgGt/sQGGqnTjZesPFY1uNtcwj7hO8q6zB1YxDvvQ5/Qx/z8XlssFgvXtpRN3kkfmWrz3KUJDr+f3hSKuGzaGThCQctdN/Kflm3EEJsA8qDBNsnKPl6/INhjVBF0qSisc9uxenxRvzmOw2D3Yuj/wM+YPebLBgNSCaENhLII4OfRFzHh8AjxqXnwciKqqXZG3gWJCEqC08OyteQzIuyLBpWo9zUHKAWD1hfyrtn3wh6XJ8zoaXvtmQ5RI+brqOZacqRU+BlNrLp4HM4l7wfgUA9p1ng6aKsHKew5rDDTne0StIhnjyWZkU7Q/5dffHgAKFTW0Tc76SQkAfeXKi4I4S6c1yjCtKzxas5eSjpGy2RDUFoXQV4ijNM+oQV5CP1ppmF2mGAcSfOte9VSxtGrR6ehbWowLbpIYRfC8r7xIutrFr7UgsUUDCf4ooGqfnrzFoJzIVyaDCpxLzqBJqRGs6gzuPPzB9oDztnxh/Fw7E5C9pfjuA71pBk5/oRUS8cD1pPM+v6pfzQBCd9CJWqZG/xnP6Bpf7g+OABVYzfQJaj0k=
+before_deploy: # omit node_modules, since we set skip_cleanup below
+  - rm -rf node_modules
